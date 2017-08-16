@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tcc.myweb</groupId>
+    <artifactId>my-web</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>myconsole</module>
+        <module>myservice</module>
+        <module>myserviceapi</module>
+    </modules>
+
+    <properties>
+        <servlet_version>3.1.0</servlet_version>
+        <!-- spring的ID -->
+        <spring.groupId>org.springframework</spring.groupId>
+        <!-- spring版本号 -->
+        <spring.version>4.0.8.RELEASE</spring.version>
+        <!-- mybatis版本号 -->
+        <mybatis.version>3.2.8</mybatis.version>
+        <!--mybatis-spring的版本  -->
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <!-- oracle版本 -->
+        <ojdbc.version>10.2.0.4.0</ojdbc.version>
+    </properties>
+    <!--父模块dependencyManagement只会影响现有依赖的配置,但不会引入依赖,maven重构的文章:http://www.infoq.com/cn/news/2011/01/xxb-maven-3-pom-refactoring-->
+    <!--这段配置不会给任何子模块引入依赖，但如果某个子模块需要使用servlet，就可以在各自子模块进行依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet_version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Spring核心包 -->
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-webmvc</artifactId> <!-- spring mvc包 -->
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${spring.groupId}</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- spring核心包完毕 -->
+        </dependencies>
+    </dependencyManagement>
+
+</project>
